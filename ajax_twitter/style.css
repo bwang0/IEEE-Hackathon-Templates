@@ -1,0 +1,47 @@
+/* Written by Daeyun Shin for IEEE@UIUC Hackathon. Sept 7, 2012 */
+body {
+  font-size: 12px;
+}
+#container {
+  margin: 0 auto;
+  width: 800px;
+}
+h1 {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+}
+h1 span {
+  font-size: 14px;
+  color: #aaa;
+}
+#top {
+  margin-bottom: 40px;
+}
+#tweets {
+  clear: both;
+}
+#tweets .tweet {
+  width: 100%;
+}
+#tweets .tweet .name {
+  margin-right: 10px;
+  float: left;
+  display: block;
+  width: 170px;
+  text-align: right;
+}
+#tweets .tweet .name span {
+  font-size: 90%;
+  color: #989898;
+}
+#tweets .tweet .text {
+  float: left;
+  margin-bottom: 15px;
+  display: block;
+  width: 600px;
+}
+#tweets .tweet .text span {
+  font-weight: bold;
+  background-color: yellow;
+}
