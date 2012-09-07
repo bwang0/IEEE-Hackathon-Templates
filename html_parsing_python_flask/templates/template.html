@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html lang="en-US"> 
+<!--Reddit Image Title Guessing Game-->
+<!--Author: Daeyun Shin-->
+<!--Sept 7, 2012-->
+    <head> 
+        <meta charset="UTF-8" /> 
+        <title>Reddit Guessing Game</title> 
+        <style type="text/css">
+            .incorrect { color:#f00 !important; }
+            .correct { color:#0f0 !important; }
+            .titles a{ color:#000; line-height:1.4; }
+            .titles a:hover{ background-color:#eee; }
+            .hidden { display:none; padding:10px; }
+            .redditpic { clear:both; display:block; }
+            .navigation li{ display:inline; margin:5px; }
+            .navigation { margin-bottom:40px; }
+        </style>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                    var finished = false;
+                    $(".titles a").click(function(e){
+                        e.preventDefault(); // ignore the default link behavior
+                        if(!finished){ 
+                            finished=true; // execute the following part only once
+                            if($(this).attr("id")=="t{{ answer }}"){ // if the id of the clicked link matches the correct answer
+                                $(this).append(" <span class='correct'> (correct)</span>");
+                                $("#t{{ answer }}").parent().siblings().hide(100); // hide other options. {{answer}} is the index of the correct answer.
+                                $(".comments").show(200); //show "Read Comments"
+                                $(".playagain").show(200); //show "Play Again"
+                            }else{ // selected a wrong answer
+                                $(this).append(" <span class='incorrect'> (incorrect)</span>"); // mark it incorrect
+                                $("#t{{ answer }}").append(" <span class='correct'> (correct)</span>"); //
+                                $(".playagain").show(200);
+                            }
+                        }
+                });
+            });
+            // end of javascript
+        </script> 
+    </head>
+    <body> 
+        <div>
+        <div>
+            <h2>Flask and HTML Parsing Example</h2>
+        </div>
+            <ul class="navigation">
+                <li>Menu: </li>
+                <li><a href="/">Play</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="http://reddit.com/r/pics">Go to /r/pics</a></li>
+            </ul>
+        </div>
+        <div>
+            <!--if the variable imgurl exists, we are on the main page.-->
+            {% if imgurl %}
+            <!--render the main page based on the input from Flask-->
+            <div>
+                <h3>Guess the title of this image (from reddit.com/r/pics)</h3>
+            </div>
+            <ul class="titles">
+                {% for i in titles %}
+                <li><a id="t{{ loop.index0 }}" href="#">{{ i }}</a></li>
+                {% endfor %}
+            </ul>
+            <a href="{{ comments }}" class="comments hidden">Read Comments</a>
+            <a href="/" class="playagain hidden">Play Again</a>
+            <img class="redditpic" src="{{ imgurl }}" height="600" />
+            {% elif about_text %}
+            <!-- render the "about" page -->
+            <p>{{about_text}}</p>
+            {% endif %}
+        </div>
+    </body>
+</html>
