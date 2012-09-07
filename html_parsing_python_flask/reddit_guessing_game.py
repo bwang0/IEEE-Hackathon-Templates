@@ -2,7 +2,7 @@
 
 # This is a simple guessing game based on the images from reddit.com/r/pics
 # Player has to guess the title of a randomly selected image by answering a multiple choice question
-# This code is provided as a basic example of a Flask app. Read http://flask.pocoo.org/docs/quickstart/ to learn about Flask
+# This code is provided as an example of a basic Flask app. Read http://flask.pocoo.org/docs/quickstart/ to learn about Flask
 
 # Author: Daeyun Shin
 # Sept 7, 2012
