@@ -1,4 +1,4 @@
-## ajax_server_response_
+## ajax_server_response
 
 This is an example of sending an Ajax request to the server. Node.js version is here: https://github.com/Koshroy/IEEE-Hackathon-Template-NodeJS
 
